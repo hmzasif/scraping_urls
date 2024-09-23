@@ -1,4 +1,5 @@
 import axios from 'redaxios';
+import FlashMessages from "controllers/vue_components/flash_messages"
 
 export default {
     name: 'Scraper',
@@ -8,6 +9,9 @@ export default {
             url: '',
             list_of_urls: []
         };
+    },
+    components: {
+        FlashMessages
     },
     methods: {
         async scrapeUrl() {
@@ -20,13 +24,19 @@ export default {
 
             if (response.data.success) {
                 this.list_of_urls = response.data.list;
+                if(this.urls_list == [] || this.urls_list.length == 0){
+                    this.$refs.flash.show("No URL found on this page", 'alert');
+                } else {
+                    this.$refs.flash.show("URLs Fetched", 'notice');
+                }
             } else {
-                alert(response.data.message || 'Something went wrong');
+                this.$refs.flash.show("something went wrong", 'alert');
             }
         }
     },
     computed: {},
     template: `
+        <FlashMessages ref="flash"></FlashMessages>
         <div>
             <input 
                 v-model="url" 
