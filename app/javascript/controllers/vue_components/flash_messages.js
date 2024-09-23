@@ -25,8 +25,8 @@ export default {
        class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-opacity duration-300 ease-in-out"
        :class="{'opacity-100': show_message, 'opacity-0': !show_message}">
     <div :class="{
-        'border border-red-500 text-red-800 bg-transparent': flash_type === 'alert',
-        'border border-green-500 text-green-800 bg-transparent': flash_type === 'notice',
+        'border border-red-500 text-red-600 bg-transparent': flash_type === 'alert',
+        'border border-green-500 text-green-600 bg-transparent': flash_type === 'notice',
         'flex items-center p-2 mb-4 rounded-lg': true
       }" role="alert">
       
