@@ -24,43 +24,41 @@ export default {
 
             if (response.data.success) {
                 this.list_of_urls = response.data.list;
-                if(this.urls_list == [] || this.urls_list.length == 0){
-                    this.$refs.flash.show("No URL found on this page", 'alert');
-                } else {
-                    this.$refs.flash.show("URLs Fetched", 'notice');
-                }
+                this.$refs.flash.show("URLs Fetched", 'notice');
             } else {
-                this.$refs.flash.show("something went wrong", 'alert');
+                this.list_of_urls = [];
+                this.$refs.flash.show(response.data.error || "Server error. Please try again.", 'alert');
             }
         }
     },
     computed: {},
     template: `
+      <div>
         <FlashMessages ref="flash"></FlashMessages>
-        <div>
-            <input 
-                v-model="url" 
-                placeholder="Enter URL to scrape" 
-                @keyup.enter="scrapeUrl" 
-            />
-            <button @click="scrapeUrl">Scrape</button>
-            <div v-if="list_of_urls.length && url">
-                <p>Total Urls: {{ list_of_urls.length }}</p>
-                <table v-if="list_of_urls.length > 0">
-                    <thead>
-                        <tr>
-                            <th>URL</th>
-                            <th>Anchor Text</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(link, index) in list_of_urls" :key="index">
-                            <td>{{ link.url }}</td>
-                            <td>{{ link.anchor_text }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <input 
+          v-model="url" 
+          placeholder="Enter URL to scrape" 
+          @keyup.enter="scrapeUrl" 
+        />
+        <button @click="scrapeUrl">Scrape</button>
+    
+        <div v-if="list_of_urls.length && url">
+          <p>Total Urls: {{ list_of_urls.length }}</p>
+          <table v-if="list_of_urls.length > 0">
+            <thead>
+              <tr>
+                <th>URL</th>
+                <th>Anchor Text</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(link, index) in list_of_urls" :key="index">
+                <td>{{ link.url }}</td>
+                <td>{{ link.anchor_text }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
     `
 };
