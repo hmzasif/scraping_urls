@@ -80,6 +80,9 @@ EDITOR=code rails credentials:edit --environment development
 
 Inside the credentials file, add your secrets. since SQLite is being used, no passwords are required.
 
+## Testing Overview
+
+This application includes MiniTest for unit testing models and functional testing for controllers, ensuring robust validation and expected behavior of the application's features.
 ## Deployment
 
 The application is deployed on Render. You can access the live version [here](https://scraping-url-a54df9b3906f.herokuapp.com/).

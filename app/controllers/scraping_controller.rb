@@ -7,6 +7,8 @@ class ScrapingController < ApplicationController
       if scraper.present?
         render json: { success: true, list: scraper }
       end
+    else
+      render json: { success: false, error: "URL is missing" }, status: :bad_request
     end
   end
 
