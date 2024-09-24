@@ -82,4 +82,4 @@ Inside the credentials file, add your secrets. since SQLite is being used, no pa
 
 ## Deployment
 
-The application is deployed on Render. You can access the live version [here](https://example.com/).
+The application is deployed on Render. You can access the live version [here](https://scraping-url-a54df9b3906f.herokuapp.com/).
