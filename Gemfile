@@ -70,3 +70,5 @@ end
 
 gem "nokogiri"
 gem "tailwindcss-rails"
+
+gem "rubocop", "~> 1.66"

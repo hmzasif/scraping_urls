@@ -1,4 +1,3 @@
-# app/services/link_extractor_service.rb
 class LinkExtractorService
   def initialize(url)
     @url = url
@@ -13,11 +12,11 @@ class LinkExtractorService
     source_url = SourceUrl.find_or_create_by(url: @url)
 
     doc.css('a').each do |link_tag| link = link_tag['href']
-      next if link.nil? || link.start_with?('#', 'mailto:')
+    next if link.nil? || link.start_with?('#', 'mailto:')
 
-      full_url = URI.join(base_uri, link).to_s
-      anchor_text = link_tag.text.strip
-      extract_links << { url: full_url, anchor_text: anchor_text }
+    full_url = URI.join(base_uri, link).to_s
+    anchor_text = link_tag.text.strip
+    extract_links << { url: full_url, anchor_text: anchor_text }
     end
 
     source_url.scraped_urls.create(extract_links)

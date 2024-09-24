@@ -36,7 +36,6 @@ export default {
       </svg>
       
       <div class="ms-3 text-sm font-medium">{{ message }}</div>
-      
     </div>
   </div>
 `,

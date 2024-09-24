@@ -1,6 +1,14 @@
-# Link Scraper Web App
+# Link Scraper Web Application
 
 To scrape URLs from web pages using a Rails backend, paired with a Vue.js single-page application.
+
+---
+
+## Overview
+
+This application allows users to input a URL and scrape all the URLs from the page. The scraped URLs are displayed in a table format, showing both the URL and its associated anchor text. Additionally, users can view previously scraped URLs from visited pages.
+
+![Home Page Screenshot](public/home_page.png)
 
 ---
 
