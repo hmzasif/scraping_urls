@@ -43,7 +43,7 @@ yarn install
 
 4. To setup the database, please run:
 ```bash
-rails db:create && rails db:migrate
+rails db:create db:migrate
 ```
 
 5. Run the local server:
