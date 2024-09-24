@@ -60,3 +60,19 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 CMD ["./bin/rails", "server"]
+
+
+# Install PostgreSQL client library
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y curl libsqlite3-0 libvips libpq-dev && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+
+# Install the correct version of Bundler
+RUN gem install bundler -v 2.5.5
+
+# Install application gems
+COPY Gemfile Gemfile.lock ./
+RUN bundle _2.5.5_ install && \
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+    bundle exec bootsnap precompile --gemfile

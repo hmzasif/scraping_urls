@@ -26,6 +26,19 @@ To scrape URLs from web pages using a Rails backend, paired with a Vue.js single
 - **CSS Framework**: Tailwind CSS
 
 ---
+
+## Setup with Docker
+
+1. Inside the `scraping_urls` directory, run the following command in a terminal.
+
+```bash
+docker compose up --build
+```
+
+2. Open a browser and view the application at [localhost](http://localhost:3000). You should see a running application. In the terminal, press ctrl+c to stop the application.
+
+---
+
 ## Manual Setup
 
 1. Clone the project from GitHub:
