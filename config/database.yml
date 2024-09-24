@@ -7,12 +7,12 @@ default: &default
 
 development:
   <<: *default
-  database: scraping_url_development
+  database: <%= ENV['DB_NAME_DEV'] %>
 
 test:
   <<: *default
-  database: scraping_url_test
+  database: <%= ENV['DB_NAME_TEST'] %>
 
 production:
   <<: *default
-  database: scraping_url_production
+  database: <%= ENV['DB_NAME_PROD'] %>

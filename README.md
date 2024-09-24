@@ -26,7 +26,7 @@ To scrape URLs from web pages using a Rails backend, paired with a Vue.js single
 - **CSS Framework**: Tailwind CSS
 
 ---
-## Setup Instructions
+## Manual Setup
 
 1. Clone the project from GitHub:
 ```bash
@@ -52,7 +52,12 @@ rails db:create db:migrate
 rails db:seed
 ```
 
-6. Run the local server:
+6. Copy .env.example to your .env file to set up the environment variables:
+```bash
+cp .env.example .env
+```
+
+7. Run the local server:
 ```bash
 bin/dev
 ```
@@ -78,11 +83,16 @@ rails secret
 EDITOR=code rails credentials:edit --environment development
 ```
 
-Inside the credentials file, add your secrets. since SQLite is being used, no passwords are required.
+Inside the credentials file, add your secrets. Additionally, If you use password and username for pg, you can add them in the credentials file as shown below
+```yaml
+db:
+   username: your_database_username
+   password: your_database_password
 
+```
 ## Testing Overview
 
 This application includes MiniTest for unit testing models and functional testing for controllers, ensuring robust validation and expected behavior of the application's features.
 ## Deployment
 
-The application is deployed on Render. You can access the live version [here](https://scraping-url-a54df9b3906f.herokuapp.com/).
+The application is deployed on Heroku. You can access the live version [here](https://scraping-url-a54df9b3906f.herokuapp.com/).

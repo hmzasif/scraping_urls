@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ScrapingController < ApplicationController
   def index; end
 
@@ -8,7 +10,7 @@ class ScrapingController < ApplicationController
         render json: { success: true, list: scraper }
       end
     else
-      render json: { success: false, error: "URL is missing" }, status: :bad_request
+      render json: { success: false, error: 'URL is missing' }, status: :bad_request
     end
   end
 
@@ -25,7 +27,7 @@ class ScrapingController < ApplicationController
     if source_url.present?
       render json: { success: true, list: source_url.scraped_urls }
     else
-      render json: { success: false, error: "URL not found." }
+      render json: { success: false, error: 'URL not found.' }
     end
   end
 
@@ -33,7 +35,7 @@ class ScrapingController < ApplicationController
     source_url = SourceUrl.find_by(url: params[:url])
 
     if source_url
-      render json: { exists: true, message: "This URL has already been scraped. Please check with Visited URLs" }
+      render json: { exists: true, message: 'This URL has already been scraped. Please check with Visited URLs' }
     else
       render json: { exists: false }
     end
