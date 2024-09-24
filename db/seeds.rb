@@ -1,9 +1,18 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+source_url = SourceUrl.find_or_create_by(url: 'http://example.com')
+
+if source_url.persisted?
+  puts "SourceUrl found or created: #{source_url.url}"
+
+  scraped_url = source_url.scraped_urls.create(
+    url: 'https://www.iana.org/domains/example',
+    anchor_text: 'More information...'
+  )
+
+  if scraped_url.persisted?
+    puts "ScrapedUrl created: #{scraped_url.url} with anchor text: '#{scraped_url.anchor_text}'"
+  else
+    puts "Error creating ScrapedUrl: #{scraped_url.errors.full_messages.join(', ')}"
+  end
+else
+  puts "Error creating SourceUrl: #{source_url.errors.full_messages.join(', ')}"
+end

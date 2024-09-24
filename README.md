@@ -6,7 +6,9 @@ To scrape URLs from web pages using a Rails backend, paired with a Vue.js single
 
 ## Overview
 
-This application allows users to input a URL and scrape all the URLs from the page. The scraped URLs are displayed in a table format, showing both the URL and its associated anchor text. Additionally, users can view previously scraped URLs from visited pages.
+- This application allows users to input a URL and scrape all the URLs from the page. The scraped URLs are displayed in a table format, showing both the URL and its associated anchor text.
+- Additionally, users can view previously scraped URLs from visited pages as shown in the screenshot below.
+
 
 ![Home Page Screenshot](public/home_page.png)
 
@@ -45,8 +47,12 @@ yarn install
 ```bash
 rails db:create db:migrate
 ```
+5. To seed the development database, run:
+```bash
+rails db:seed
+```
 
-5. Run the local server:
+6. Run the local server:
 ```bash
 bin/dev
 ```
@@ -67,9 +73,9 @@ In Rails 7, secrets are securely managed using the credentials file. Follow thes
 ```bash
 rails secret
 ```
-2. **Update credentials:** You can use your preferred text editor to update the credentials file. For example, using `nano`:
+2. **Update credentials:** You can use any text editor of your choice to update the credentials file, such as `nano`, `vim`, or `code`. For example, with code, run the following command:
 ```bash
-EDITOR=nano rails credentials:edit --environment development
+EDITOR=code rails credentials:edit --environment development
 ```
 
 Inside the credentials file, add your secrets. since SQLite is being used, no passwords are required.
